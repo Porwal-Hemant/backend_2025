@@ -1,0 +1,122 @@
+
+chai aur code lecture 1  -> BASIC 
+
+love babbar backend development lecture 1 
+
+CHAI AUR CODE LECTURE 3 -> 
+
+// objective -> 
+// Your Express.js code sets up a simple server that listens on port 3000.
+server.js file 
+
+import express from 'express'
+
+const app = express() ;  
+
+app.get('/' , (req ,  res)=>{
+    res.send("server is ready")
+}); 
+
+const port =  process.env.PORT || 3000 ;  
+
+app.listen
+
+app.listen(port, () => console.log('Server running on port ' + port));
+// app.listen(...) starts the Express server and makes it listen on a specified port. 
+
+/*
+
+port is a variable (e.g., 3000, 5000) that defines which port the server will run on.
+When the server starts successfully, the callback function runs.
+
+*/
+
+/* 
+Beginning mai isko run karne par error show hoga ( kya fir warning )
+require synchronous code aata hai 
+import asynchronous code lekar aata hai 
+
+isko overcome karne ke liye mai 
+
+package.json meh mai main ke neeche (   "type" : "module",   ) kar dunga
+*/
+
+
+
+server.js file code end over here  
+
+extra points that i focused on during this backend series -> 
+
+
+USE OF useEffect -> 
+
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+function MyComponent() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/posts")
+      .then(response => setData(response.data))
+      .catch(error => console.error(error));
+  }, []);  // Runs only on mount
+
+  return <div>{data.length} Posts Loaded</div>;
+}
+
+
+explanation -> 
+
+Runs once when the component mounts (empty dependency array []).
+
+
+dhaasu explanation 
+
+The useEffect hook in your code fetches data from an API (https://jsonplaceholder.typicode.com/posts) and updates the state variable data, which in turn changes data.length.
+
+
+const [count, setCount] = useState(0);
+
+useEffect(() => {
+  console.log(`Count updated: ${count}`);
+}, [count]);  // Runs when `count` changes
+
+
+difference between protocol , domain and port 
+
+Explanation of Protocol, Domain, and Port
+In web development, an origin is defined by three key components:
+
+Component   Example	                Definition
+Protocol    http:// or https://	        The communication method (secure or not).
+Domain	    example.com or localhost	The website or server address.
+Port	    :3000, :5000, :80	        The endpoint on the server for communication.
+
+Different Origin Examples (Blocked by CORS)
+❌ Different Protocol:
+
+Frontend: **http**://example.com
+Backend: **https**://example.com
+❌ Different Domain:
+
+Frontend: http://**mywebsite.com**
+Backend: http://**api.example.com**
+❌ Different Port:
+
+Frontend: http://localhost:**3000**
+Backend: http://localhost:**5000**
+
+
+
+A server is a physical or virtual machine that runs applications. A port is just a logical entry point on that machine.
+
+Even if two applications run on different ports, they can still be on the same server because a server can handle multiple processes at different ports simultaneously.
+
+How complete URL is formed 
+
+Once the server is running on localhost:PORT, all routes are appended to this base URL (http://localhost:4000 in this case).
+
+
+concept of proxy which is necessary during the production 
